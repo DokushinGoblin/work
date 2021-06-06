@@ -20,33 +20,33 @@
       const output_csv = document.getElementById('race_list');
 
       function csv_data(dataPath) {
-        const request = new XMLHttpRequest(); // HTTP‚Åƒtƒ@ƒCƒ‹‚ğ“Ç‚İ‚Ş
-        request.addEventListener('load', (event) => { // ƒ[ƒh‚³‚¹Às
-            const response = event.target.responseText; // ó‚¯æ‚Á‚½ƒeƒLƒXƒg‚ğ•Ô‚·
-            csv_array(response, '\t'); //csv_array‚ÌŠÖ”‚ğÀs
+        const request = new XMLHttpRequest(); // HTTPã§ãƒ•ã‚¡ã‚¤ãƒ«ã‚’èª­ã¿è¾¼ã‚€
+        request.addEventListener('load', (event) => { // ãƒ­ãƒ¼ãƒ‰ã•ã›å®Ÿè¡Œ
+            const response = event.target.responseText; // å—ã‘å–ã£ãŸãƒ†ã‚­ã‚¹ãƒˆã‚’è¿”ã™
+            csv_array(response, '\t'); //csv_arrayã®é–¢æ•°ã‚’å®Ÿè¡Œ
         });
-        request.open('GET', dataPath, true); // csv‚ÌƒpƒX‚ğw’è
+        request.open('GET', dataPath, true); // csvã®ãƒ‘ã‚¹ã‚’æŒ‡å®š
         request.send();
       }
 
       function csv_array(data, dlm) {
-        const dataArray = []; //”z—ñ‚ğ—pˆÓ
-        const dataString = data.split('\n'); //‰üs‚Å•ªŠ„
-        for (let i = 0; i < dataString.length; i++) { //‚ ‚é‚¾‚¯ƒ‹[ƒv
+        const dataArray = []; //é…åˆ—ã‚’ç”¨æ„
+        const dataString = data.split('\n'); //æ”¹è¡Œã§åˆ†å‰²
+        for (let i = 0; i < dataString.length; i++) { //ã‚ã‚‹ã ã‘ãƒ«ãƒ¼ãƒ—
             dataArray[i] = dataString[i].split(dlm);
         }
-        let insertElement = ''; //ƒe[ƒuƒ‹ƒ^ƒO‚É•\¦‚·‚é—p‚Ì•Ï”
-        dataArray.forEach((element) => { //”z—ñ‚Ì’†g‚ğ•\¦
+        let insertElement = ''; //ãƒ†ãƒ¼ãƒ–ãƒ«ã‚¿ã‚°ã«è¡¨ç¤ºã™ã‚‹ç”¨ã®å¤‰æ•°
+        dataArray.forEach((element) => { //é…åˆ—ã®ä¸­èº«ã‚’è¡¨ç¤º
             insertElement += '<tr>';
             element.forEach((childElement) => {
                 insertElement += `<td>${childElement}</td>`
             });
             insertElement += '</tr>';
         });
-        output_csv.innerHTML = insertElement; // •\¦
+        output_csv.innerHTML = insertElement; // è¡¨ç¤º
       }
 
-      csv_data('botin.txt'); // csv‚ÌƒpƒX
+      csv_data('botin.txt'); // csvã®ãƒ‘ã‚¹
     </script>
 
   </body>
